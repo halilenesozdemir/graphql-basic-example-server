@@ -1,10 +1,10 @@
-import { postSchema } from "../../models/post.js";
+import PostSchema from "../../models/post.js";
 
 export const resolvers = {
   Query: {
     getPosts: async () => {
       try {
-        const allPosts = await postSchema.find();
+        const allPosts = await PostSchema.find();
         return allPosts;
       } catch (error) {
         console.log(error);
@@ -12,7 +12,7 @@ export const resolvers = {
     },
     getPost: async (_, { postId }) => {
       try {
-        const getPost = await postSchema.findById(postId);
+        const getPost = await PostSchema.findById(postId);
         return getPost;
       } catch (error) {
         console.log(error);
@@ -22,7 +22,7 @@ export const resolvers = {
   Mutation: {
     createPost: async (_, { body }) => {
       try {
-        const createPost = await postSchema.create(body);
+        const createPost = await PostSchema.create(body);
         return createPost;
       } catch (error) {
         console.log(error);
